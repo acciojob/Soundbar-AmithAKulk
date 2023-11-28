@@ -1,31 +1,11 @@
 //your JS code here. If required.
-let audioPlayer = document.getElementById('audioPlayer');
-let currentAudio = null;
+const audio = document.getElementById("audio");
 
-function playAudio(soundFileName) {
-    if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-    }
-    audioPlayer.src = `sounds/${soundFileName}`;;
-    audioPlayer.play(); 
-    currentAudio = audioPlayer;
-    
+function play(src){
+	audio.src=src;
+	audio.play();
 }
 
-function stopAudio() {
-    if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-    }
+function stop(){
+	audio.pause();
 }
-	function playSound(sound) {
-		const audio = new Audio('sounds/${sound}');
-		audio.play();
-	}
-
-	function stopSounds() {
-		const allAudio = document.querySelectorAll('audio');
-		allAudio.forEach(audio => audio.pause());
-	}
-});
