@@ -1,23 +1,24 @@
 //your JS code here. If required.
-document.addEventListener('DOMContentLoaded', function(){
-	const sounds = ['sound1.mp3', 'sound2.mp3', 'sound3.mp3'];
+let audioPlayer = document.getElementById('audioPlayer');
+let currentAudio = null;
 
-	const buttonContainer = document.getElementById('buttons');
+function playAudio(soundFileName) {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+    audioPlayer.src = `sounds/${soundFileName}`;;
+    audioPlayer.play(); 
+    currentAudio = audioPlayer;
+    
+}
 
-	sounds.forEach((sound, index) => {
-		const button = document.createElement('button');
-		button.classList.add('btn');
-		button.txtContent = 'sound ${index+1}';
-		button.addEventListener('click', () => playSound(sound));
-		buttonsContainer.appendChild(button);
-	});
-	
-	const stopButton = document.createElement('button');
-	stopButton.classList.add('btn', 'stop');
-	stopButton.textContent = 'stop';
-	stopButton.addEventListener('click', stopSounds);
-	buttonContainer.appendChild(stopButton);
-
+function stopAudio() {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+}
 	function playSound(sound) {
 		const audio = new Audio('sounds/${sound}');
 		audio.play();
